@@ -6,15 +6,15 @@ local_resource(
 )
 
 ko_build(
-    ref="flexo-otelcol",
-    path="./collector/otelcol",
-    deps=["./collector/otelcol"],
+    ref="flexo-collector",
+    path="./collector",
+    deps=["./collector"],
 )
 
 k8s_yaml("./k8s/k8s.yaml")
 
 k8s_resource(
-    "flexo-collector",
+    "flexo",
     port_forwards=[4317, 4318],
-    resource_deps=["flexo-otelcol"],
+    resource_deps=["flexo-collector"],
 )

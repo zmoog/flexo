@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flexo-collector
+  name: flexo
   labels:
-    app: flexo-collector
+    app: flexo
 spec:
   selector:
     matchLabels:
-      app: flexo-collector
+      app: flexo
   template:
     metadata:
       labels:
-        app: flexo-collector
+        app: flexo
     spec:
       containers:
       - name: flexo-collector
-        image: flexo-otelcol
+        image: flexo-collector
         args:
           - --config=/etc/otel/collector-config.yaml
         volumeMounts:

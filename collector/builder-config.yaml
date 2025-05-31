@@ -1,7 +1,7 @@
 dist:
   name: otelcol
   description: Basic OTel Collector distribution for Flexo
-  output_path: ./otelcol
+  output_path: .
 
 exporters:
   - gomod:
