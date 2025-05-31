@@ -14,7 +14,6 @@ ko_build(
 k8s_yaml("./k8s/k8s.yaml")
 
 k8s_resource(
-    "flexo",
-    port_forwards=[4317, 4318],
-    resource_deps=["flexo-collector"],
+    "flexo-collector",
+    port_forwards=[4317, 4318]
 )
