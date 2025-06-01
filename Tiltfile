@@ -8,12 +8,15 @@ local_resource(
 ko_build(
     ref="flexo-collector",
     path="./collector",
-    deps=["./collector"],
+    deps=[
+        "./collector",
+        "./receiver/discordreceiver",
+    ],
 )
 
 k8s_yaml("./k8s/k8s.yaml")
 
 k8s_resource(
     "flexo-collector",
-    port_forwards=[4317, 4318]
+    port_forwards=[4317, 4318],
 )

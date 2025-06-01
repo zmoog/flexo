@@ -18,6 +18,12 @@ spec:
         image: flexo-collector
         args:
           - --config=/etc/otel/collector-config.yaml
+        env:
+          - name: DISCORD_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: discord-token
+                key: token
         volumeMounts:
           - name: config
             mountPath: /etc/otel
@@ -28,6 +34,15 @@ spec:
         - name: config
           configMap:
             name: flexo-collector-config
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: discord-token
+type: Opaque
+stringData:
+  token: "YOUR_DISCORD_TOKEN_HERE"  # Replace with your actual Discord token
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -42,6 +57,9 @@ data:
             endpoint: 0.0.0.0:4317
           http:
             endpoint: 0.0.0.0:4318
+      discord:
+        token: ${DISCORD_TOKEN}
+
     processors:
       batch:
 
@@ -60,6 +78,6 @@ data:
           processors: [batch]
           exporters: [debug]
         logs:
-          receivers: [otlp]
+          receivers: [discord]
           processors: [batch]
           exporters: [debug]

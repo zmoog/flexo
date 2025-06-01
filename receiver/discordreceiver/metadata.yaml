@@ -1,0 +1,7 @@
+type: discord
+scope_name: github.com/zmoog/flexo/receiver/discordreceiver
+
+status:
+  class: receiver
+  stability:
+    development: [logs]
