@@ -18,7 +18,7 @@ type discordReceiver struct {
 }
 
 // NewDiscordReceiver creates a new discord receiver
-func NewDiscordReceiver(logger *zap.Logger, consumer consumer.Logs, config *Config) *discordReceiver {
+func newDiscordReceiver(logger *zap.Logger, consumer consumer.Logs, config *Config) *discordReceiver {
 	return &discordReceiver{
 		logger:   logger,
 		consumer: consumer,

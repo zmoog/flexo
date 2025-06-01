@@ -3,13 +3,10 @@ package discordreceiver
 import (
 	"context"
 
+	"github.com/zmoog/flexo/receiver/discordreceiver/internal/metadata"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/receiver"
-)
-
-var (
-	typeStr = component.MustNewType("discord")
 )
 
 func createDefaultConfig() component.Config {
@@ -21,7 +18,7 @@ func createLogsReceiver(ctx context.Context, settings receiver.Settings, baseCfg
 	logger := settings.Logger
 	config := baseCfg.(Config)
 
-	rcvr := NewDiscordReceiver(logger, consumer, &config)
+	rcvr := newDiscordReceiver(logger, consumer, &config)
 
 	return rcvr, nil
 }
@@ -29,8 +26,8 @@ func createLogsReceiver(ctx context.Context, settings receiver.Settings, baseCfg
 // NewFactory creates a new receiver factory
 func NewFactory() receiver.Factory {
 	return receiver.NewFactory(
-		typeStr,
+		metadata.Type,
 		createDefaultConfig,
-		receiver.WithLogs(createLogsReceiver, component.StabilityLevelAlpha),
+		receiver.WithLogs(createLogsReceiver, metadata.LogsStability),
 	)
 }
