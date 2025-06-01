@@ -2,11 +2,10 @@
 
 module go.opentelemetry.io/collector/cmd/builder
 
-go 1.23.0
-
-toolchain go1.24.3
+go 1.24.3
 
 require (
+	github.com/zmoog/flexo/receiver/discordreceiver v0.127.0
 	go.opentelemetry.io/collector/component v1.33.0
 	go.opentelemetry.io/collector/confmap v1.33.0
 	go.opentelemetry.io/collector/confmap/provider/envprovider v1.18.0
@@ -29,6 +28,7 @@ require (
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/bwmarrin/discordgo v0.29.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.2 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
@@ -46,6 +46,7 @@ require (
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/google/go-tpm v0.9.5 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.1 // indirect
 	github.com/hashicorp/go-version v1.7.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -161,3 +162,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
+
+replace github.com/zmoog/flexo/receiver/discordreceiver v0.127.0 => ../receiver/discordreceiver
